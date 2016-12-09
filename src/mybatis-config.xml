@@ -5,19 +5,20 @@
     <typeAliases>
         <!-- 对应User.xml文件 取个别名 -->
         <typeAlias alias="User" type="springmvc.domain.User"/>
+        <typeAlias alias="Article" type="springmvc.domain.Article"/>
     </typeAliases>
-    <environments default="development">
-        <environment id="development">
-            <transactionManager type="JDBC"/>
-            <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatis" />
-                <property name="username" value="root"/>
-                <property name="password" value="root"/>
-            </dataSource>
-        </environment>
-    </environments>
-    <mappers>
-        <mapper resource="springmvc/domain/User.xml"/>
-    </mappers>
+    <!--<environments default="development">-->
+        <!--<environment id="development">-->
+            <!--<transactionManager type="JDBC"/>-->
+            <!--<dataSource type="POOLED">-->
+                <!--<property name="driver" value="com.mysql.jdbc.Driver"/>-->
+                <!--<property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatis" />-->
+                <!--<property name="username" value="root"/>-->
+                <!--<property name="password" value="root"/>-->
+            <!--</dataSource>-->
+        <!--</environment>-->
+    <!--</environments>-->
+    <!--<mappers>-->
+        <!--<mapper resource="springmvc/domain/User.xml"/>-->
+    <!--</mappers>-->
 </configuration>

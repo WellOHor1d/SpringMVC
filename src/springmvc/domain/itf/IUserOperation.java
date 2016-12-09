@@ -1,5 +1,6 @@
 package springmvc.domain.itf;
 
+import springmvc.domain.Article;
 import springmvc.domain.User;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface IUserOperation {
     public List selectUsers(String userName);
     public void addUser(User user);
     public void updateUser(User user);
+    List<Article> getUserArticles(int id);
 }

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace指定了要绑定的接口类mapper此项目为IUserOperation,就是以前的dao类 -->
 <mapper namespace="springmvc.domain.itf.IUserOperation">
     <!-- resultType这个属性对应 mybatis-config配置文件里的别名 -->
     <select id="selectUserByID" parameterType="int" resultType="User">
@@ -32,4 +34,20 @@
     <update id="updateUser" parameterType="User" >
         update user set userName=#{userName},userAge=#{userAge},userAddress=#{userAddress} where id=#{id}
     </update>
+
+    <!-- User 联合文章进行查询 方法之一的配置 (多对一的方式) -->
+    <resultMap id="resultUserArticleList" type="Article">
+        <id property="id" column="aid" />
+        <result property="title" column="title" />
+        <result property="content" column="content" />
+        <association property="user" javaType="User">
+            <id property="id" column="id" />
+            <result property="userName" column="userName" />
+            <result property="userAddress" column="userAddress" />
+        </association>
+    </resultMap>
+    <select id="getUserArticles" parameterType="int" resultMap="resultUserArticleList">
+        select user.id,user.userName,user.userAddress,article.id aid,article.title,article.content from user,article
+        where user.id=article.userid and user.id=#{id}
+    </select>
 </mapper>
